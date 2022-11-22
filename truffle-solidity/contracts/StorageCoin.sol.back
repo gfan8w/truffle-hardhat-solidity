@@ -1,0 +1,22 @@
+pragma solidity ^0.8.0;
+import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Pausable.sol";
+contract StorageCoin is ERC20Pausable {
+    string public  name;
+    string public symbol;
+    uint8 public constant decimals = 18;
+    constructor(
+        string storage _name,
+        string storage _symbol,
+        uint256 _totalSupply_
+    )
+    public
+    {
+        name = _name;
+        symbol = _symbol;
+        //_totalSupply = _totalSupply_;
+        //_balances[msg.sender] = totalSupply();
+        //paused = true;
+    }
+}
+
+// https://fourswords.io/docs/smartcontracts/smartcontracts/practical-walkthrough-of-smartcontract-storage/

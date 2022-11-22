@@ -1,0 +1,37 @@
+
+<button onClick="signMessage()">Sign Message</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.7.0-rc.0/web3.min.js" integrity="sha512-/PTXSvaFzmO4So7Ghyq+DEZOz0sNLU4v1DP4gMOfY3kFu9L/IKoqSHZ6lNl3ZoZ7wT20io3vu/U4IchGcGIhfw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    async function signMessage() {
+        if (!window.ethereum) return alert("Please Install Metamask");
+
+        // connect and get metamask account
+
+        //account is unlocked in local geth
+        let account="0x9ea356d25c658A648f408ABE2322F2f01F12A0F0"
+        console.log("pop up metamask")
+
+        let master_private = '0x7f2dba38c010f6aad93c48bd77e72c1ea6720a40f45e46e96cc81e4e65a33866'
+
+        let data = '0x56089f8754df28e6ead6655cd9f5a814c0ef1bc3e4b645ae7fd59b94f0aec383'
+
+        //metamask instance in chrome, currently connect to http://127.0.0.1:8545
+        let a = await new Web3(window.ethereum).eth.sign(data, account)
+        // a = 0xfe5d26bdb4c295cecd75ae27021e3ae8101ab2ff4efa065b466a8100c1740b0c0d87f8a5cf0444d275663818e5a424c460c3d472dba34a3053f0b075c7bfe76a1c
+
+        let w3=new Web3("http://127.0.0.1:8545")
+        let b = await w3.eth.sign(data, account)
+        // b = 0xb99e8f5253f570b6f2f67804301f45791047d8c4b24b7566b895c017e951da003a6a317a0713aa157598db8c4949284ca99ae0d628c5f4f1f17343a4abd520891c
+
+        // b=c=d=e
+        const c = await window.ethereum?.request({ method: 'personal_sign', params: [data, account], })
+
+        let d = await w3.eth.personal.sign(data, account,"password") // geth enable --http.api --http.api "db,eth,net,web3,personal"
+
+        let e = await w3.eth.accounts.sign(data, master_private)
+
+        console.log('sign data:', data, 'got sig:', a, ', ', b, ', ', c, ', ', d, ', ', e.signature)
+
+    }
+</script>

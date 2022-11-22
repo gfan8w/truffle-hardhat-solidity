@@ -1,0 +1,17 @@
+.idea/
+truffle-solidity/.idea/
+truffle-solidity/node_modules/
+truffle-solidity/build/
+
+hardhat-solidity/.idea/
+hardhat-solidity/node_modules/
+hardhat-solidity/build/
+hardhat-solidity/.env
+hardhat-solidity/coverage
+hardhat-solidity/coverage.json
+hardhat-solidity/typechain
+hardhat-solidity/typechain-types
+
+#Hardhat files
+hardhat-solidity/cache
+hardhat-solidity/artifacts
