@@ -1,0 +1,21 @@
+{
+  "name": "firstweb3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "web3",
+    "practice"
+  ],
+  "author": "lint",
+  "license": "ISC",
+  "dependencies": {
+    "ethereumjs-tx": "^2.1.2",
+    "ethers": "^5.5.4",
+    "solc": "^0.8.0",
+    "web3": "^1.6.1"
+  }
+}
