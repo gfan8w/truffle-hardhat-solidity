@@ -4,12 +4,17 @@ import "@nomiclabs/hardhat-ethers";       // js风格：require('@nomiclabs/hard
 import "@openzeppelin/hardhat-upgrades"; // js风格： require('@openzeppelin/hardhat-upgrades');
 import { resolve } from 'path';
 
+// local 使用内置的账号，无需这里指定
 const config: HardhatUserConfig = {
   solidity: "0.8.17",
   defaultNetwork: 'hardhat',
   networks: {
     hardhat: {
       chainId: 31337,
+    },
+    local: {
+      url:'http://localhost:8545',
+      chainId: 1990,
     },
     rinkbey: {
       url: 'https://rinkeby.infura.io/v3/c1092815dc56459f9bf6faa712857e55',

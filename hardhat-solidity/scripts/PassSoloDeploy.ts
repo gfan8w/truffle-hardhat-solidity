@@ -9,7 +9,7 @@ const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
 
 async function main() {
   try {
-    const [deployer] = await ethers.getSigners();
+    const [deployer, acc1] = await ethers.getSigners();
     const feeReceiver = deployer;
 
     console.log(`Deploying contracts with account: ${deployer.address}`);
@@ -27,6 +27,8 @@ async function main() {
 
     const PassSolo_baseContract = await contractFactory.deploy([]);
     console.log("PassSolo_baseContract.address:",PassSolo_baseContract.address);
+    // PassSolo_baseContract.connect(acc1).#####     // 使用另外一个账号
+
 
     const BoxRegistry = await ethers.getContractFactory('BoxRegistry');
     console.log('Deploying BoxRegistry...');
@@ -40,6 +42,9 @@ async function main() {
       console.log("ContractDeployed event:")
       console.log( id.toString(), address.toHexString());
     });
+
+    const deploytx = await ethers.provider.getTransaction(boxRegistry.deployTransaction.hash);
+    console.log("deployContract boxRegistry at block number: ",  await deploytx.wait()); // wait() 能拿到其他信息
 
     let receipt = await boxRegistry.createBox(1,"hello", value,{gasPrice:14_000_000_000,gasLimit:500000});
 

@@ -64,18 +64,19 @@ contract PassSolo is IPassSolo, ERC1155 {
 
         uint32 curSeqNum = sale.totalSold;
 
-        for (uint256 i = 0; i < _quantity; i++) {
-            mintInner(_onBehalfOf);
+        for (uint8 i = 0; i < _quantity; i++) {
+            mintInner(_onBehalfOf, i);
             curSeqNum += 1;
         }
 
         sale.totalSold = curSeqNum;
     }
 
-    function mintInner(address _onBehalfOf)
+    function mintInner(address _onBehalfOf, uint8 seq)
         internal
         returns (uint8 pos)
     {
+        pos = seq;
         _mint(_onBehalfOf, uint256(pos), 1, "");
     }
 
