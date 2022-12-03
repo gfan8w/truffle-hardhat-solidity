@@ -80,6 +80,12 @@ contract PassSolo is IPassSolo, ERC1155 {
         _mint(_onBehalfOf, uint256(pos), 1, "");
     }
 
+    /*
+
+
+
+
+    */
     function randVariation(uint32 _curSeqNum, uint32 _totalAvailable)
         internal
         view
