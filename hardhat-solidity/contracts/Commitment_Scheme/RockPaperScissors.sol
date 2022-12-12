@@ -78,7 +78,7 @@ contract RockPaperScissors {
 
         // Return additional funds transferred
         if(msg.value > commitAmount) {
-            (bool success, ) = msg.sender.call.value(msg.value - commitAmount)("");
+            (bool success, ) = msg.sender.call{value:msg.value - commitAmount}("");
             require(success, "call failed");
         }
 
@@ -199,11 +199,11 @@ contract RockPaperScissors {
 
         // Send the payouts
         if(player0Payout > 0) {
-            (bool success, ) = players[0].playerAddress.call.value(player0Payout)("");
+            (bool success, ) = players[0].playerAddress.call{value:player0Payout}("");
             require(success, 'call failed');
             emit Payout(players[0].playerAddress, player0Payout);
         } else if (player1Payout > 0) {
-            (bool success, ) = players[1].playerAddress.call.value(player1Payout)("");
+            (bool success, ) = players[1].playerAddress.call{value:player1Payout}("");
             require(success, 'call failed');
             emit Payout(players[1].playerAddress, player1Payout);
         }
