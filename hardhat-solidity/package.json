@@ -5,7 +5,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "run_sample_deploy": "npx hardhat run scripts/deploy.ts"
+    "run_sample_deploy": "npx hardhat run scripts/deploy.ts",
+    "test_airdrop": "npx hardhat test test/Airdrop/AirdropToken2.ts"
   },
   "devDependencies": {
     "@ethersproject/abi": "^5.4.7",

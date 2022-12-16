@@ -123,7 +123,7 @@ contract AirDropToken {
         }
 
         // Check the merkle proof
-        require(node == _rootHash);
+        require(node == _rootHash, "proof wrong");
 
         // Redeem!
         _balances[recipient] += amount;

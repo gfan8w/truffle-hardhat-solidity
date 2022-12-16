@@ -7,7 +7,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
 
-// Off-chain Allowlist 模式的空投，只有获得正确签名的才可以mint
+// Off-chain Allowlist 模式的空投，只有获得正确签名的才可以mint，缺点：后期可能会增加额外的mint。不是一次定型的
 // 参考：https://docs.alchemy.com/docs/how-to-airdrop-nfts#step-3-write-the-smart-contract
 contract NFTAllowlist is ERC721Enumerable, Ownable {
     using Counters for Counters.Counter;
