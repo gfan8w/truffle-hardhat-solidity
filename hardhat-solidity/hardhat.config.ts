@@ -1,8 +1,21 @@
-import { HardhatUserConfig } from "hardhat/config";
+import { HardhatUserConfig, task } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
 import "@nomiclabs/hardhat-ethers";       // js风格：require('@nomiclabs/hardhat-ethers');
 import "@openzeppelin/hardhat-upgrades"; // js风格： require('@openzeppelin/hardhat-upgrades');
 import { resolve } from 'path';
+import * as dotenv from "dotenv";  // 加入 env 环境变量读取功能
+
+dotenv.config();
+
+// hardhat 自定义一个命令， npx hardhat   会显示有一个 AVAILABLE TASKS: accounts
+// https://hardhat.org/guides/create-task.html
+task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
+  const accounts = await hre.ethers.getSigners();
+  let i = 1;
+  for (const account of accounts) {
+    console.log(i++,'.', account.address);
+  }
+});
 
 // local 使用内置的账号，无需这里指定
 const config: HardhatUserConfig = {
